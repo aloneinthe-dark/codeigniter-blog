@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="<?= base_url('assets/DataTables/datatables.min.css') ?>">
+<script src="<?= base_url('assets/DataTables/datatables.min.js') ?>"></script>
+
 <div class="col-lg-12 col-md-12 col-sm-12">
 
 <?php if($this->session->flashdata('pesan') != null): ?>
@@ -19,7 +22,7 @@
 	<br>
 
 
-	<table class="table table-bordered table-hover table-striped">
+	<table class="table table-bordered table-hover table-striped" id="table">
 		<thead>
 			<tr>
 				<th>No</th>
@@ -28,9 +31,10 @@
 			</tr>
 		</thead>
 		<tbody>
+			<?php $no = 1; ?>
 			<?php foreach($kategori as $data): ?>
 				<tr>
-					<td><?= $data['id']; ?></td>
+					<td><?= $no++; ?></td>
 					<td><?= $data['nama_kategori'] ?></td>
 					<td>
 						<a href="<?= base_url('kategori/ubah/' . $data['id']); ?>" class="btn btn-info btn-sm">Ubah</a>
@@ -68,3 +72,9 @@
     </div>
   </div>
 </div>
+
+<script>
+	$(document).ready(function(){
+		$('#table').DataTable();
+	});
+</script>

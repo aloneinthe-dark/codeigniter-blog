@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="<?= base_url('assets/DataTables/datatables.min.css') ?>">
+<script src="<?= base_url('assets/DataTables/datatables.min.js') ?>"></script>
+
 <div class="container">
 	
 	<?php if($this->session->flashdata('pesan') != null): ?>
@@ -12,8 +15,8 @@
 
 	<div class="card">
 		<div class="card-body">
-			<a href="<?= base_url('postingan/tambah'); ?>" class="btn btn-primary">Tambah Berita & Postingan</a>
-			<table class="table table-bordered table-hover mt-2">
+			<a href="<?= base_url('postingan/tambah'); ?>" class="btn btn-primary mb-3">Tambah Berita & Postingan</a>
+			<table class="table table-bordered table-hover mt-2" id="table">
 				<thead>
 					<tr>
 						<th>No</th>
@@ -51,3 +54,9 @@
 	</div>
 		
 </div>
+
+<script>
+	$(document).ready(function(){
+		$('#table').DataTable();
+	});
+</script>
