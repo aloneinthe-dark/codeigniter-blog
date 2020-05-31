@@ -106,4 +106,11 @@ class Postingan extends CI_Controller{
 		}
 	}
 
+	public function hapus($id)
+	{
+		$this->postingan->delete($id);
+		$this->session->set_flashdata('pesan', 'Postingan berhasil dihapus');
+		redirect('postingan');
+	}
+
 }
