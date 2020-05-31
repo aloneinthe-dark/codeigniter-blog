@@ -18,4 +18,9 @@ class M_postingan extends CI_Model{
 		return $this->db->get_where('tbl_postingan', ['id' => $id])->row_array();
 	}
 
+	public function update($id, $data)
+	{
+		return $this->db->update('tbl_postingan', $data, ['id' => $id]);
+	}
+
 }
