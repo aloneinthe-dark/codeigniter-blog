@@ -71,4 +71,39 @@ class Postingan extends CI_Controller{
 		$this->load->view('templates/footer');
 	}
 
+	public function edit($id)
+	{
+		$data['postingan'] = $this->postingan->getById($id);
+		$data['kategori'] = $this->kategori->get();
+		$data['header'] = "Edit Berita & Postingan";
+		$this->load->view('templates/header');
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('admin/postingan/edit', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function update()
+	{
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('nama_postingan', 'Nama postingan', 'trim|required');
+		$this->form_validation->set_rules('id_kategori', 'Kategori', 'trim|required');
+		$this->form_validation->set_rules('isi_postingan', 'Isi postingan', 'trim|required');
+
+		$id = $this->input->post('id');
+
+		if($this->form_validation->run() == false){
+			redirect('postingan/edit/' . $id);
+		}else{
+			$data = [
+				'nama' => $this->input->post('nama_postingan'),
+				'id_kategori' => $this->input->post('id_kategori'),
+				'isi_postingan' => $this->input->post('isi_postingan')
+			];
+			$this->postingan->update($id, $data);
+			$this->session->set_flashdata('pesan', 'Postingan berhasil diubah');
+			redirect('postingan');
+		}
+	}
+
 }
