@@ -23,4 +23,9 @@ class M_postingan extends CI_Model{
 		return $this->db->update('tbl_postingan', $data, ['id' => $id]);
 	}
 
+	public function delete($id)
+	{
+		return $this->db->delete('tbl_postingan', ['id' => $id]);
+	}
+
 }
