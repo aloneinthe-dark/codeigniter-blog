@@ -1,5 +1,7 @@
 <div class="container">
 	
+<a href="<?= base_url('postingan'); ?>" class="btn btn-secondary mb-3">Kembali</a>
+
 	<?php if($this->session->flashdata('pesan') != null): ?>
 		<div class="alert alert-warning alert-dismissible fade show" role="alert">
 		  <?= $this->session->flashdata('pesan'); ?>

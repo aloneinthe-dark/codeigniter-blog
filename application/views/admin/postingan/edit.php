@@ -1,4 +1,8 @@
+<script src="<?= base_url('assets/ckeditor/ckeditor.js'); ?>"></script>
 <div class="container">
+
+<a href="<?= base_url('postingan'); ?>" class="btn btn-secondary mb-3">Kembali</a>
+
 	<div class="card">
 		<div class="card-body">
 			<form action="<?= base_url('postingan/update'); ?>" method="POST">
@@ -19,7 +23,7 @@
 				</div>
 				<div class="form-group">
 					<label>Isi postingan</label>
-					<textarea class="form-control" name="isi_postingan" cols="10" rows="5"><?= $postingan['isi_postingan'] ?></textarea>
+					<textarea class="form-control" name="isi_postingan" id="isi_postingan"><?= $postingan['isi_postingan'] ?></textarea>
 
 
 				</div>
@@ -29,3 +33,7 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	CKEDITOR.replace('isi_postingan');
+</script>
