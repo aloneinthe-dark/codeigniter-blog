@@ -13,7 +13,7 @@ class Kategori extends CI_Controller{
 	{
 		$data['header'] = "Kategori";
 		$data['kategori'] = $this->kategori->get();
-		$this->load->view('templates/header');
+		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('admin/kategori/index', $data);
 		$this->load->view('templates/footer');
@@ -43,7 +43,7 @@ class Kategori extends CI_Controller{
 		}else{
 			$data['header'] = "Kategori";
 			$data['kategori'] = $this->kategori->get_where($id);
-			$this->load->view('templates/header');
+			$this->load->view('templates/header', $data);
 			$this->load->view('templates/sidebar', $data);
 			$this->load->view('admin/kategori/ubah', $data);
 			$this->load->view('templates/footer');

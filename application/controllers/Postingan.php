@@ -15,7 +15,7 @@ class Postingan extends CI_Controller{
 		$data['header'] = "Postingan";
 		$data['postingan'] = $this->postingan->get();
 		$data['kategori'] = $this->kategori->get();
-		$this->load->view('templates/header');
+		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('admin/postingan/index', $data);
 		$this->load->view('templates/footer');
@@ -33,7 +33,7 @@ class Postingan extends CI_Controller{
 
 		if($this->form_validation->run() == false){
 			$data['header'] = "Tambah Berita & Postingan";
-			$this->load->view('templates/header');
+			$this->load->view('templates/header', $data);
 			$this->load->view('templates/sidebar', $data);
 			$this->load->view('admin/postingan/tambah', $data);
 			$this->load->view('templates/footer');
@@ -46,7 +46,7 @@ class Postingan extends CI_Controller{
 			$data = [
 				'id_kategori' => $this->input->post('id_kategori'),
 				'nama' => $this->input->post('nama_postingan'),
-				'isi_postingan' => $this->input->post('isi_postingan'),
+				'isi_postingan' => htmlspecialchars($this->input->post('isi_postingan'), true),
 				'slug' => $slug,
 				'tanggal_dibuat' => time()
 			];
@@ -65,7 +65,7 @@ class Postingan extends CI_Controller{
 		$data['kategori'] = $this->kategori->get_where($id_kategori);
 		$data['postingan'] = $this->postingan->getById($id);
 		$data['header'] = "Detail Berita & Postingan";
-		$this->load->view('templates/header');
+		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('admin/postingan/detail', $data);
 		$this->load->view('templates/footer');
@@ -76,7 +76,7 @@ class Postingan extends CI_Controller{
 		$data['postingan'] = $this->postingan->getById($id);
 		$data['kategori'] = $this->kategori->get();
 		$data['header'] = "Edit Berita & Postingan";
-		$this->load->view('templates/header');
+		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('admin/postingan/edit', $data);
 		$this->load->view('templates/footer');
@@ -98,7 +98,7 @@ class Postingan extends CI_Controller{
 			$data = [
 				'nama' => $this->input->post('nama_postingan'),
 				'id_kategori' => $this->input->post('id_kategori'),
-				'isi_postingan' => $this->input->post('isi_postingan')
+				'isi_postingan' => htmlspecialchars($this->input->post('isi_postingan'), true)
 			];
 			$this->postingan->update($id, $data);
 			$this->session->set_flashdata('pesan', 'Postingan berhasil diubah');
