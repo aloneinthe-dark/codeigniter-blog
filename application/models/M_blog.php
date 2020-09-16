@@ -18,4 +18,9 @@ class M_blog extends CI_Model{
 		return $this->db->get_where('tbl_kategori', ['id' => $id])->row_array();
 	}
 
+	public function getAllCategory()
+	{
+		return $this->db->get('tbl_kategori')->result_array();
+	}
+
 }

@@ -25,12 +25,11 @@
   <div class="col-md-4 col-lg-4 col-sm-4">
     <div class="list-group mt-3">
       <a href="#" class="list-group-item list-group-item-action active">
-        Cras justo odio
+        Kategori Postingan
       </a>
-      <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-      <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-      <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-      <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Vestibulum at eros</a>
+      <?php foreach($kategori as $data): ?>
+        <a href="#" class="list-group-item list-group-item-action"><?= $data['nama_kategori'] ?></a>
+      <?php endforeach; ?>
     </div>
   </div>
 </div>

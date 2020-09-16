@@ -13,6 +13,7 @@ class Blog extends CI_Controller{
 	public function index()
 	{
 		$data['postingan'] = $this->blog->get();
+		$data['kategori'] = $this->blog->getAllCategory();
 		$this->load->view('templates/blog-header');
 		$this->load->view('blog/index', $data);
 		$this->load->view('templates/blog-footer');
