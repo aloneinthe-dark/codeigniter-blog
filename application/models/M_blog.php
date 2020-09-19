@@ -23,4 +23,14 @@ class M_blog extends CI_Model{
 		return $this->db->get('tbl_kategori')->result_array();
 	}
 
+	public function getCategoryByName($category_name)
+	{
+		return $this->db->get_where('tbl_kategori', ['nama_kategori' => $category_name])->row_array();
+	}
+
+	public function getBlogByCategory($id_category)
+	{
+		return $this->db->get_where('tbl_postingan', ['id_kategori' => $id_category])->result_array();
+	}
+
 }
