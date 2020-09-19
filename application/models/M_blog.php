@@ -33,4 +33,12 @@ class M_blog extends CI_Model{
 		return $this->db->get_where('tbl_postingan', ['id_kategori' => $id_category])->result_array();
 	}
 
+	public function search($keyword)
+	{
+		$this->db->like('nama', $keyword);
+		$this->db->or_like('isi_postingan', $keyword);
+		$data = $this->db->get('tbl_postingan')->result_array();
+		return $data;
+	}
+
 }

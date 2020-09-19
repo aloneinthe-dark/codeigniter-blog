@@ -58,7 +58,16 @@ class Blog extends CI_Controller{
 		$this->load->view('templates/blog-header');
 		$this->load->view('blog/index', $data);
 		$this->load->view('templates/blog-footer');
-		
+	}
+
+	public function cari()
+	{
+		$keyword = $this->input->get('keyword');
+		$data['postingan'] = $this->blog->search($keyword);
+		$data['kategori'] = $this->blog->getAllCategory();
+		$this->load->view('templates/blog-header');
+		$this->load->view('blog/index', $data);
+		$this->load->view('templates/blog-footer');
 	}
 
 }
